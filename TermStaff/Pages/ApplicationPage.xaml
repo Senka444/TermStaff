@@ -1,0 +1,38 @@
+﻿<Page x:Class="TermStaff.Pages.ApplicationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TermStaff.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ApplicationPage"
+      Name="ViewApplication">
+
+    <Grid DataContext="{Binding ElementName=ViewApplication, Path=. }">
+        <Grid.RowDefinitions  >
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Enterprise" FontSize="30"></TextBlock>
+        <Button x:Name="BlackList_Button" Content="Черный список" Width="100" Height="30" Click="Btn_Add_Black_Listk"></Button>
+        <DataGrid Grid.Row="1" x:Name="DGApplication" ItemsSource="{Binding MyApplication}"   AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}"/>
+                <DataGridTextColumn Header="FIO" Binding="{Binding Path=Group.User.FIO}"/>
+                <DataGridTextColumn Header="Decription" Binding="{Binding Path=Decription}"/>
+                <DataGridTextColumn Header="DateStart" Binding="{Binding Path=DateStart}"/>
+                <DataGridTextColumn Header="DateEnd" Binding="{Binding Path= DateEnd}"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Path=IdStatus}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="AddBlackList" Click="Btn_Add_Black_Listk"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>
